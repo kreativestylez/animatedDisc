@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title> Record Player</title>
+<style>
+/* background style, is container wraps the Dj Set */
+	.wrapDisc {
+		width: 420px;
+		position: relative;
+		background-color: #f4f4f4;
+		padding: 87px;
+		margin: auto;
+		display: -webkit-box;
+		overflow: hidden;
+		z-index: 0;
+	}
+	.wrapDiscShadow {
+	    width: 339px;
+	    height: 354px;
+	    position: absolute;
+	    content: "";
+	    background-color: #a5a5a5;
+	    padding: 87px;
+	    display: -webkit-box;
+	    top: 150px;
+	    right: -64px;
+	    transform: rotate(50deg);
+	    border-radius: 138px;
+	    z-index: -1;
+	}
+	/* Recorder player circle display */
+	.recordsPlayer {
+		width: 400px;
+	    height: 400px;
+	    background-color: rgb(94, 97, 109);
+	    border-radius: 52px;
+	    border: 6px solid rgb(51, 51, 51);
+	    margin: auto;
+	    z-index: 100;
+	}
+	.recordsPlayer::before {
+		width: 280px;
+	    height: 280px;
+	    position: relative;
+	    content: "";
+	    background-color: #f9f9f9;
+	    border-radius: 100%;
+	    margin: 13% 10%;
+	    display: flex;
+	    border: 6px solid rgb(51, 51, 51);
+	}
+	.recordsPlayer::after {
+		width: 80px;
+		height: 80px;
+		position: relative;
+		content: "";
+		background-color: rgb(255, 102, 102);
+		border-radius: 100%;
+		margin: -61% 35%;
+		display: flex;
+		border: 6px solid rgb(51, 51, 51);
+	}
+	/* circle nuts */
+	.recordsPlayernuts {
+		width: 20px;
+		height: 20px;
+		position: relative;
+		background-color: #f9f9f9;
+		border-radius: 100%;
+		margin: 45% -57%;
+		display: flex;
+		border: 6px solid rgb(51, 51, 51);
+	}
+	.recordsPlayernuts::before {
+		width: 20px;
+	    position: relative;
+	    content: "";
+	    background-color: #f9f9f9;
+	    border-radius: 100%;
+	    display: flex;
+	    bottom: 145px;
+	    left: 164px;
+	    padding: 11px;
+	    border: 6px solid rgb(51, 51, 51);
+	}
+	.recordsPlayernuts::after {
+		width: 20px;
+	    position: relative;
+	    content: "";
+	    background-color: #f9f9f9;
+	    border-radius: 100%;
+	    display: flex;
+	    top: 145px;
+	    right: 164px;
+	    padding: 11px;
+	    border: 6px solid rgb(51, 51, 51);
+	}
+
+	/* voume controls */
+	.volumeleft {
+		width: 5px;
+	    height: 35px;
+	    position: relative;
+	    background-color: #252525;
+	    border-radius: 50px;
+	    top: 357px;
+	    left: 212px;
+	}
+	.volumeleft::before {
+		width: 13px;
+	    height: 10px;
+	    position: relative;
+	    content: "";
+	    background-color: rgb(87, 185, 206);
+	    border-radius: 4px;
+	    bottom: -11px;
+	    left: -4px;
+	    display: flex;
+	}
+	.volumeright {
+		width: 5px;
+	    height: 35px;
+	    position: relative;
+	    background-color: #252525;
+	    border-radius: 50px;
+	    top: 357px;
+	    left: 238px;
+	}
+	.volumeright::before {
+		width: 13px;
+	    height: 10px;
+	    position: relative;
+	    content: "";
+	    background-color: rgb(87, 185, 206);
+	    border-radius: 4px;
+	    bottom: -11px;
+	    left: -4px;
+	    display: flex;
+	}
+	/* tonearm control */
+	.tonearm {
+		width: 7px;
+	    height: 140px;
+	    position: relative;
+	    background-color: #252525;
+	    border-radius: 50px;
+	    top: 79px;
+	    left: 380px;
+	    z-index: 5;
+
+	    transform: rotate(0deg);
+	    transform-origin: 50% 0%;
+	    transition: all 500ms ease-out; 
+	    
+	}
+		.wrapDisc:hover .tonearm {
+	    transform: rotate(38deg);
+	    left: 374px;
+	}
+
+	  /* .wrapDisc:hover .tonearm {
+		-webkit-animation: movetonearm 5s ease; 
+	 animation: movetonearm 1s ease;
+	    animation-fill-mode: forwards;
+	}*/
+
+	/* Safari 4.0 - 8.0 */
+		/*@-webkit-keyframes movetonearm {
+		    0%   {top: 0px;}
+		    25%  {top: 200px;}
+		    75%  {top: 50px}
+		    100% {top: 100px;}
+		}*/
+
+		/* Standard syntax */
+		/*@keyframes movetonearm {
+		    from {transform: rotate(0deg);transform-origin: 50% 0%;left:380; }
+		    to {transform: rotate(38deg);transform-origin: 50% 0%;left: 374px;}
+		}*/
+
+	.tonearm::before {
+	    width: 21px;
+	    height: 39px;
+	    position: relative;
+	    content: "";
+	    background-color: #252525;
+	    border-radius: 50px;
+	    top: 121px;
+	    left: -7px;
+	    display: flex;
+	}
+	
+	.topSpin {
+		width: 55px;
+	    height: 53px;
+	    top: 139px;
+	    left: 173px;
+	    right: 0px;
+	    position: relative;
+	    border-right: 4px solid transparent;
+	    border-top: 4px solid #554E3E;
+	    border-left: 4px solid transparent;
+	    border-radius: 80%;
+	}
+	.topSpin::before {
+		width: 117px;
+		height: 119px;
+		top: -31px;
+		left: -36px;
+		right: 0px;
+		position: relative;
+		content: "";
+		border-right: 4px solid transparent;
+		border-top: 4px solid #554E3E;
+		border-left: 4px solid transparent;
+		border-radius: 80%;
+		display: flex;
+	}
+	.topSpin::after {
+	    width: 168px;
+	    height: 146px;
+	    top: -182px;
+	    left: -60px;
+	    right: 0px;
+	    position: relative;
+	    content: "";
+	    border-right: 4px solid transparent;
+	    border-top: 4px solid #554E3E;
+	    border-left: 4px solid transparent;
+	    border-radius: 80%;
+	    display: flex;
+		}
+
+	.bottomSpin {
+		width: 55px;
+	    height: 53px;
+	    top: 159px;
+	    left: 172px;
+	    right: 0px;
+	    position: relative;
+	    border-right: 4px solid transparent;
+	    border-bottom: 4px solid #554E3E;
+	    border-left: 4px solid transparent;
+	    border-radius: 80%;
+	}
+	.bottomSpin::before {
+		width: 117px;
+		height: 119px;
+		top: -41px;
+		left: -36px;
+		right: 0px;
+		position: relative;
+		content: "";
+		border-right: 4px solid transparent;
+		border-bottom: 4px solid #554E3E;
+		border-left: 4px solid transparent;
+		border-radius: 80%;
+		display: flex;
+	}
+	.bottomSpin::after {
+	    width: 168px;
+	    height: 146px;
+	    top: -166px;
+	    left: -60px;
+	    right: 0px;
+	    position: relative;
+	    content: "";
+	    border-right: 4px solid transparent;
+	    border-bottom: 4px solid #554E3E;
+	    border-left: 4px solid transparent;
+	    border-radius: 80%;
+	    display: flex;
+		}
+	.warpTopandDownSpin {
+	    width: 100%;
+	    height: 100%;
+	    position: relative;
+	}
+
+	.wrapDisc:hover .warpTopandDownSpin {
+	    animation: rotateDisc 200ms infinite linear;
+	}
+
+		/* Standard syntax */
+		@keyframes rotateDisc {
+		    from {transform: rotate(0deg);transform-origin: 49% 177%; }
+			to {transform: rotate(359deg);transform-origin: 49% 177%; }
+		}
+
+</style>
+</head>
+<body>
+<div class="wrapDisc">
+		<div class="recordsPlayer"></div>
+		<div class="wrapDiscShadow"></div>
+		<div class="recordsPlayernuts"></div>
+		<div class="volumeleft"></div>
+		<div class="volumeright"></div>
+		<div class="tonearm"></div>
+	<div class="warpTopandDownSpin">
+		<div class="topSpin"></div>
+		<div class="bottomSpin"></div>
+	</div>
+</div>	
+</body>
+</html>
